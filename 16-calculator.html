@@ -36,8 +36,10 @@
                     </td>
                     <td><input type='text' id='num2' min='0' size='10' ></td>
                     <td>
-                        <input type="button" name="calculate" value="계산"
-                           onclick="calculate()"  >
+                        <input type="button" name="calculate" value="계산" >
+                        <button type="button" id="btn-calc">
+                            계산2
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -50,11 +52,80 @@
         </table>
     </div>
     <div></div>
-    <script type="text/javascript">
-        // function onlyNum() {
-        //     if
 
-        // }
+    <script type="text/javascript">
+        $(function() {
+            $("#btn-calc").click(function() {
+                var left = $("#num1").val();
+                var right = $("#num2").val();
+                var operator = $("#cal").val();
+
+                var isValid = checkValidate(left, right, operator);
+                console.log(isValid, left, right, operator)
+                if (isValid) {
+                    var result = calc(left, right, operator);
+                    $("#result").text(numberWithCommas(result));
+                } else {
+                    $("#result").text("계산을 할 수 없습니다.");
+                }
+            });
+
+            function numberWithCommas(sum) {
+                sum = sum.toString();
+                var pattern = /(-?\d+)(\d{3})/;
+                while (pattern.test(sum)) {
+                    sum = sum.replace(pattern, "$1,$2");
+                }
+
+                return sum;
+            }
+
+            function calc(left, right, operator) {
+                left = Number(left);
+                right = Number(right);
+
+                switch(operator) {
+                    case '-':
+                        return left - right;
+                    case '*':
+                        return left * right;
+                    case '/':
+                        return left / right;
+                    default:
+                        return left + right;
+                }
+            }
+
+            function checkValidate(left, right, operator) {
+                // 둘중 빈값이 하나라도 존재할 경우 오류 처리
+                if (!left || !right) {
+                    return false;
+                }
+                
+                // Number check regex (with negative value)
+                var reg = /^-?\d*\.?\d*$/;
+                // 둘중 하나라도 숫자가 아닌 경우
+                if (!reg.test(left) || !reg.test(left)) {
+                    return false;
+                }
+
+                // 0으로 나눗셈을 시도하는 경우
+                if (operator == "/" && parseInt(right) == 0) {
+                    return false;
+                }
+
+                // operator가 4칙연산 기호인지 확인(select에 의한 값이므로 오류일 수 없는게 정상이긴 함)
+                var operators = ['+', '-', '*', '/'];
+                if (operators.indexOf(operator) < 0) {
+                    return false;
+                }
+
+                return true;
+            }
+
+        });
+
+
         function calculate() {
             var x = $("#num1").val();
             var y = $("#num2").val();
