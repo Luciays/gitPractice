@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="16-calculator.css"> -->
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <h1>Calculator</h1>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>숫자</th>
+                    <th>부호</th>
+                    <th>숫자</th>
+                    <th>결과값</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type='text' id='num1' min='0' size='15' ></td>
+                    <td>
+                        <select id='cal'>
+                            <option>+</option>
+                            <option>-</option>
+                            <option>*</option>
+                            <option>/</option>
+                        </select>
+                    </td>
+                    <td><input type='text' id='num2' min='0' size='15' ></td>
+                    <td>
+                        <input type="button" name="calculate" value="계산"
+                           onclick="initCalculate()"  >
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>결과값:</td>
+                    <td colspan="3"><span id="result"></span></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div></div>
+    <script type="text/javascript">
+        function initCalculate() {
+            var x = $("#num1").val();
+            var y = $("#num2").val();
+            var z = $("#cal").val();
+        
+            //alert("x : "+ x +"   y : " + y + "   z : '"+z+"'  a : " + a);
+            // if((parseInt(x) >= 0 || parseInt(x)<=0) && (parseInt(y) >= 0 || parseInt(y)<=0)) {
+            //     alert("입력은 숫자만 가능합니다.");
+            //     break;
+            // }
+            var a = parseInt(x);
+            var b = parseInt(y);
+
+            var testObj = {a: 33};
+
+            alert(testObj);
+            console.log(testObj);
+            console.log(a+"       "+b);
+
+            //Number Check
+            // if(typeof(a)) {
+            //     alert("입력 값은 숫자만 가능합니다.");
+            //     break;
+            // }
+
+            //수식 연산
+            if(z == '+'){
+                //var a = parseInt(x) + parseInt(y);
+                //alert(typeof(a)+"    "+typeof(b));
+                var c = a+b;
+                console.log("더하기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                $("#result").text(a);
+                return a;
+            } else if(z=='-'){
+                var c = a-b;
+                alert("빼기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                return a;
+            } else if(z=='*'){
+                var c = a*b;
+                alert("곱하기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                return a;
+            } else if (z=='/'){
+                if(b!=0){
+                    var c = a/b;
+                    alert("나누기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                    return a;
+                } else {
+                    alert("0으로 나눌 수 없습니다.");
+                }
+                
+            } else {
+                alert( "Please try again.");
+            }
+            $("#result").text(a);
+            alert(a);
+            document.getElementById("result").innerHTML = a;
+            document.getElementById("result").innerHTML = "gi";
+            console.log(a);
+        }
+    </script>
+    <!-- <script type="text/javascript">
+        $("#calculate").val("계산").click(function(){
+            if(cal == '+'){
+                // var x = a + b;
+                var x = $('#num1').val() + $('num2').val() ;
+                console.log(x);
+                return x;
+            } else if(cal =='-') {
+                var x = $('#num1').val() - $('num2').val() ;
+                return x;
+            } else if(cal =='*') {
+                var x = $('#num1').val() * $('num2').val() ;
+                return x;
+            } else if(cal =='/') {
+                var x = $('#num1').val() / $('num2').val() ;
+                return x;
+            }
+            console.log(x);
+            $("#result").val(x);
+
+            
+        })
+    </script> -->
+    <!-- <script src="16-calculator.js"></script>
+    <script type="text/javascript">
+        $('#calculate').click(function(){
+            calculate();
+        });
+    </script> -->
+</body>
+</html>
