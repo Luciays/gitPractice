@@ -51,7 +51,11 @@
     </div>
     <div></div>
     <script type="text/javascript">
-        function initCalculate() {
+        // function onlyNum() {
+        //     if
+
+        // }
+        function calculate() {
             var x = $("#num1").val();
             var y = $("#num2").val();
             var z = $("#cal").val();
@@ -65,33 +69,34 @@
             var b = parseInt(y);
 
             //Number Check
-            // if(typeof(a)) {
-            //     alert("입력 값은 숫자만 가능합니다.");
-            //     break;
-            // }
+            if(a = )
 
             //수식 연산
             if(z == '+'){
                 //var a = parseInt(x) + parseInt(y);
                 //alert(typeof(a)+"    "+typeof(b));
                 var c = a+b;
-                console.log("더하기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                console.log("더하기가 수행되었습니다. " + "a : " + a + "   b : " + b + 
+                "   z : '" + z + "'  결과값 : " + c);
                 $("#result").text(c);
                 return c;
             } else if(z=='-'){
                 var c = a-b;
-                console.log("빼기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                console.log("빼기가 수행되었습니다. " + "a : " + a + "   b : " + b + 
+                "   z : '" + z + "'  결과값 : " + c);
                 $("#result").text(c);
                 return c;
             } else if(z=='*'){
                 var c = a*b;
-                console.log("곱하기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                console.log("곱하기가 수행되었습니다. " + "a : " + a + "   b : " + b + 
+                "   z : '" + z + "'  결과값 : " + c);
                 $("#result").text(c);
                 return c;
             } else if (z=='/'){
                 if(b!=0){
                     var c = a/b;
-                    console.log("나누기가 수행되었습니다. "+"a : "+ a +"   b : " + b + "   z : '"+z+"'  결과값 : " + c);
+                    console.log("나누기가 수행되었습니다. " + "a : " + a + "   b : " + b + 
+                    "   z : '" + z + "'  결과값 : " + c);
                     $("#result").text(c);
                     return c;
                 } else {
